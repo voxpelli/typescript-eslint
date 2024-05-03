@@ -19,20 +19,19 @@
   "scripts": {
     "build": "yarn tsx ./build.ts",
     "format": "prettier --write \"./**/*.{ts,mts,cts,tsx,js,mjs,cjs,jsx,json,md,css}\" --ignore-path ../../.prettierignore",
-    "lint": "npx nx lint",
-    "typecheck": "tsc --noEmit"
+    "lint": "npx nx lint"
   },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "7.8.0",
+    "@typescript-eslint/scope-manager": "7.8.0",
     "@typescript-eslint/types": "7.8.0",
-    "@typescript-eslint/utils": "7.8.0"
+    "@typescript-eslint/typescript-estree": "7.8.0",
+    "@typescript-eslint/utils": "7.8.0",
+    "@typescript-eslint/visitor-keys": "7.8.0"
   },
   "devDependencies": {
     "@eslint/js": "*",
-    "@typescript-eslint/eslint-plugin": "7.8.0",
     "@typescript-eslint/parser": "7.8.0",
-    "@typescript-eslint/scope-manager": "7.8.0",
-    "@typescript-eslint/typescript-estree": "7.8.0",
-    "@typescript-eslint/visitor-keys": "7.8.0",
     "esbuild": "~0.20.2",
     "eslint": "*",
     "esquery": "*",

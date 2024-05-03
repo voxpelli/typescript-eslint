@@ -601,8 +601,9 @@ export class Converter {
     // this is intentional we can ignore conversion if `:` is in first character
     if (colonIndex > 0) {
       const range = getRange(node, this.ast);
-      // @ts-expect-error -- TypeScript@<5.1 doesn't have ts.JsxNamespacedName
-      const result = this.createNode<TSESTree.JSXNamespacedName>(node, {
+      // TODO: Fix as any usage
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      const result = this.createNode<TSESTree.JSXNamespacedName>(node as any, {
         type: AST_NODE_TYPES.JSXNamespacedName,
         namespace: this.createNode<TSESTree.JSXIdentifier>(node, {
           type: AST_NODE_TYPES.JSXIdentifier,
@@ -1283,6 +1284,7 @@ export class Converter {
       }
 
       case SyntaxKind.GetAccessor:
+      // eslint-disable-next-line no-fallthrough -- This is intentional for identical node handling
       case SyntaxKind.SetAccessor: {
         if (
           node.parent.kind === SyntaxKind.InterfaceDeclaration ||
@@ -1756,7 +1758,7 @@ export class Converter {
       }
 
       // Classes
-
+      // eslint-disable-next-line no-fallthrough -- This is intentional for identical node handling
       case SyntaxKind.ClassDeclaration:
         if (
           !node.name &&
@@ -2652,7 +2654,8 @@ export class Converter {
               getTextForTokenKind(node.readonlyToken.kind)),
           typeAnnotation: node.type && this.convertChild(node.type),
           typeParameter: this.convertChild(node.typeParameter),
-        });
+          // TODO: Fix type error
+        } as TSESTree.TSMappedType);
       }
 
       case SyntaxKind.ParenthesizedExpression:
@@ -2726,7 +2729,7 @@ export class Converter {
             ),
         });
       }
-
+      // eslint-disable-next-line no-fallthrough -- This is intentional for identical node handling
       case SyntaxKind.FunctionType: {
         // eslint-disable-next-line deprecation/deprecation
         const { modifiers } = node;
@@ -2902,7 +2905,8 @@ export class Converter {
           declare: hasModifier(SyntaxKind.DeclareKeyword, node),
           id: this.convertChild(node.name),
           members: node.members.map(el => this.convertChild(el)),
-        });
+          // TODO: Fix type error
+        } as TSESTree.TSEnumDeclaration);
 
         return this.fixExports(node, result);
       }

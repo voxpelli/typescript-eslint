@@ -12,8 +12,7 @@
     "lint": "npx nx lint",
     "serve": "docusaurus serve",
     "start": "npx nx start",
-    "swizzle": "docusaurus swizzle",
-    "typecheck": "tsc -b ./tsconfig.json"
+    "swizzle": "docusaurus swizzle"
   },
   "dependencies": {
     "@babel/runtime": "^7.24.4",
@@ -26,6 +25,7 @@
     "@mdx-js/react": "^3.0.1",
     "@prettier/sync": "*",
     "@typescript-eslint/parser": "7.8.0",
+    "@typescript-eslint/rule-schema-to-typescript-types": "7.8.0",
     "@typescript-eslint/website-eslint": "7.8.0",
     "clsx": "^2.1.0",
     "eslint": "*",
@@ -50,7 +50,6 @@
     "@types/react-helmet": "^6.1.11",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "7.8.0",
-    "@typescript-eslint/rule-schema-to-typescript-types": "7.8.0",
     "@typescript-eslint/types": "7.8.0",
     "copy-webpack-plugin": "^12.0.0",
     "cross-fetch": "*",
