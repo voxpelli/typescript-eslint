@@ -1,6 +1,7 @@
 export {
   clearCaches,
   createProgram,
+  withoutProjectParserOptions,
 } from '@typescript-eslint/typescript-estree';
 export type {
   ParserServices,
